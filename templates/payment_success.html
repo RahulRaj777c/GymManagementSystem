@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    
+    <style>
+        body {
+            background: url('{% static "images/success-bg.jpg" %}') no-repeat center center fixed; 
+            background-size: cover; 
+            height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 0; 
+            color: #333; /* Dark text color for contrast */
+        }
+
+        .success-card {
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9); /* White background with slight transparency */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            color: #FFD700; /* Gold color for title */
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #555; /* Slightly darker text for readability */
+        }
+
+        .btn {
+            background-color: #FFD700; /* Gold button */
+            border-color: #FFD700;
+            color: #fff; /* White text on button */
+        }
+
+        .btn:hover {
+            background-color: #FFC107; /* Slightly darker gold on hover */
+            border-color: #FFC107;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="success-card">
+        
+        
+        {% if is_premium %}
+        <h1>Payment Successful!</h1>
+        <p>Thank you for purchasing the Premium Plan!</p>
+        <p>You can Book Your Classes AS YOU WISH!</p>
+        <a href="{% url 'book_class' %}" class="btn btn-primary">Book Classes</a>
+    {% else %}
+    <h1>Payment Successful!</h1>
+    <p>Thank you for your payment. Your transaction has been completed successfully.</p>
+    <p>You have 30 Classes Left!</p>
+    <a href="{% url 'classes' %}" class="btn btn-lg btn-primary">View Schedules</a>
+    {% endif %}
+    </div>
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

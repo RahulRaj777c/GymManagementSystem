@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    
+    <style>
+        body {
+            background: url('{% static "images/cta-bg.jpg" %}') no-repeat center center fixed; 
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            margin: 0; 
+        }
+        .login-container {
+            display: flex; /* Use flexbox */
+            justify-content: center;
+            align-items: stretch; /* Stretch to full height */
+            max-width: 600px; /* Adjusted width for side-by-side layout */
+            width: 100%; 
+            padding: 30px;
+            background: rgba(28, 28, 28, 0.8); 
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 127, 48, 0.3); 
+            color: #ff7f30;
+        }
+        .login-box, .trainer-box {
+            flex: 1; /* Equal width for both boxes */
+            padding: 20px; /* Add padding inside boxes */
+        }
+        .login-title {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ff7f30;
+        }
+        .form-group label {
+            color: #ff7f30;
+        }
+        .btn-primary {
+            background-color: #ff7f30; 
+            border-color: #ff7f30;
+        }
+        .btn-primary:hover {
+            background-color: #e67e22;
+            border-color: #e67e22;
+        }
+        .separator {
+            width: 2px; /* Width of the separator */
+            background-color: #ff7f30; /* Separator color */
+            height: auto; /* Full height of the container */
+            margin: 0 20px; /* Margin between boxes */
+        }
+        .text-center a {
+            color: #ff7f30;
+            display: block; /* Block display for better click area */
+            text-align: center; /* Center text */
+            margin: 10px 0; /* Space between links */
+        }
+        .text-center a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2 class="login-title">Login</h2>
+            <form method="POST" action="{% url 'trainerlogin' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit"  class="btn btn-primary btn-block">
+                    <a href="{% url 'attendance_mark' %}">Login</a>
+            </form>
+        </div>
+        
+        <div class="separator"></div> <!-- Vertical separator line -->
+
+        <div class="trainer-box">
+            <div class="text-center mt-3">
+                <a href="{% url 'login' %}">I am a User</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+</body>
+
+</html>

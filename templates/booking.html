@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Booking Form HTML Template</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Alegreya:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="{% static 'css2/bootstrap.min.css' %}" />
+
+    <!-- Custom stlyesheet -->
+    <link type="text/css" rel="stylesheet" href="{% static 'css2/style.css' %}" />
+
+</head>
+
+<body style="background-image: url('{% static 'images/cta-bg.jpg' %}'); background-size: cover; background-position: center;">
+    <form method="POST" action="{% url 'book_class' %}">
+        {% csrf_token %}
+        <div id="booking" class="section">
+            <div class="section-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="booking-form">
+                            <div class="row no-margin">
+                                <div class="col-md-3">
+                                    <div class="form-header">
+                                        <h2>Book Now</h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="row no-margin">
+                                        <!-- Date Picker -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <span class="form-label">Date</span>
+                                                <input class="form-control" type="date" name="date" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Time Picker -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <span class="form-label">Time</span>
+                                                <input class="form-control" type="time" name="time" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Trainer Selection -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <span class="form-label">Select Trainer</span>
+                                                <select class="form-control" name="trainer" required>
+                                                    <option value="" disabled selected>Select a Trainer</option>
+                                                    {% for trainer in trainers %}
+                                                        <option value="{{ trainer.id }}">{{ trainer.user.username|capfirst }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                <span class="select-arrow"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Submit Button -->
+                                        <div class="col-md-10">
+                                            <div class="form-btn">
+                                                <button class="submit-btn" type="submit">Book the Class</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    {% if messages %}
+    <div class="alert-container">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+</body>
+
+</html>

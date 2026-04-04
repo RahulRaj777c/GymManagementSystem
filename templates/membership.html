@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Membership Plans
+{% endblock %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Link your CSS here -->
+</head>
+
+<div class="container my-5">
+    <div class="membership-header text-center">
+        <h1 style="font-size: 3rem; font-weight: bold; color: #ff7f50; letter-spacing: 2px;">Our Membership Plans</h1>
+        <p style="color: #666; font-size: 1.2rem;">Choose the plan that best fits your fitness goals!</p>
+    </div>
+
+    <div id="membership-section" class="row justify-content-center">
+        <!-- Basic Plan -->
+        <div class="col-md-4 col-sm-6 my-3">
+            <div class="card shadow-lg" style="border-radius: 15px; transition: transform 0.3s;">
+                <div class="card-body text-center">
+                    <h3 style="color: #ff7f50; font-weight: bold; font-size: 2rem;">Basic Plan (No Cardio)</h3>
+                    <p class="price" style="font-size: 1.5rem; font-weight: bold; color: #ff7f50;">RS.999 / Month</p>
+                    <ul class="list-unstyled" style="color: #666;">
+                        <li>Access to all gym equipment</li>
+                        <li>30 classes available</li>
+                    </ul>
+                    <h4>Payment Options</h4>
+                    <a href="{% url 'payment' 'card' %}?plan=Basic" class="btn btn-outline-warning mt-3" style="border-color: #ff7f50; color: #ff7f50; font-weight: bold;">Pay with Card</a>
+                    <a href="{% url 'payment' 'paypal' %}?plan=Basic" class="btn btn-outline-warning mt-3" style="border-color: #ff7f50; color: #ff7f50; font-weight: bold;">Pay with UPI</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Standard Plan -->
+        <div class="col-md-4 col-sm-6 my-3">
+            <div class="card shadow-lg" style="border-radius: 15px; transition: transform 0.3s;">
+                <div class="card-body text-center">
+                    <h3 style="color: #ff7f50; font-weight: bold; font-size: 2rem;">Standard Plan (Cardio)</h3>
+                    <p class="price" style="font-size: 1.5rem; font-weight: bold; color: #ff7f50;">RS.1499 / Month</p>
+                    <ul class="list-unstyled" style="color: #666;">
+                        <li>Access to all gym equipment</li>
+                        <li>Access to all cardio machines</li>
+                        <li>30 classes available</li>
+                    </ul>
+                    <h4>Payment Options</h4>
+                    <a href="{% url 'payment' 'card' %}?plan=Standard" class="btn btn-outline-warning mt-3" style="border-color: #ff7f50; color: #ff7f50; font-weight: bold;">Pay with Card</a>
+                    <a href="{% url 'payment' 'paypal' %}?plan=Standard" class="btn btn-outline-warning mt-3" style="border-color: #ff7f50; color: #ff7f50; font-weight: bold;">Pay with UPI</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Premium Plan -->
+        <div class="col-md-4 col-sm-6 my-3">
+            <div class="card shadow-lg" style="border-radius: 15px; transition: transform 0.3s;">
+                <div class="card-body text-center">
+                    <h3 style="color: #ff7f50; font-weight: bold; font-size: 2rem;">Personal Training</h3>
+                    <p class="price" style="font-size: 1.5rem; font-weight: bold; color: #ff7f50;">RS.1999 / Month</p>
+                    <ul class="list-unstyled" style="color: #666;">
+                        <li>Access to all gym equipment</li>
+                        <li>Unlimited Personal Training</li>
+                        <li>Access to all cardio machines</li>
+                    </ul>
+                    <h4>Payment Options</h4>
+                    <a href="{% url 'payment' 'card' %}?plan=Premium" class="btn btn-outline-warning mt-3" style="border-color: #ff7f50; color: #ff7f50; font-weight: bold;">Pay with Card</a>
+                    <a href="{% url 'payment' 'paypal' %}?plan=Premium" class="btn btn-outline-warning mt-3" style="border-color: #ff7f50; color: #ff7f50; font-weight: bold;">Pay with UPI</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('load', function() {
+        // Automatically scroll to the membership section after the page loads
+        document.getElementById('membership-section').scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
+{% endblock %}

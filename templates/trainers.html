@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Trainers
+{% endblock %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+{% block content %}
+<!-- Trainers Section with Background Image -->
+<div class="trainers-background" id="trainers-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>Expert <em>Trainers</em></h2>
+                    <img src="{% static 'images/line-dec.png' %}" alt="">
+                    <p>Achieve Your Goals with the Support of Our Certified Trainers</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for i in train %}
+                <div class="col-md-4 col-sm-6 my-3">
+                    <div class="card text-center shadow-lg trainer-card" style="border-radius: 15px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;">
+                        <img src="{{ i.tr_img.url }}" class="card-img-top" alt="{{ i.tr_name }}" style="height: 300px; object-fit: cover; transition: transform 0.3s;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-size: 1.5rem; font-weight: bold; color: #ff7f50;">{{ i.tr_name }}</h5>
+                            <p class="card-text" style="color: #666;">{{ i.tr_desc }}</p>
+                            <p class="card-text" style="color: #666;">{{ i.get_human_readable_category }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('load', function() {
+        // Automatically scroll to the trainers section after the page loads
+        document.getElementById('trainers-section').scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
+
+{% endblock %}

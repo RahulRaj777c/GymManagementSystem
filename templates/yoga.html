@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Trainers
+{% endblock %}
+{% block content %}
+
+<!-- Trainers Section -->
+<div class="container">
+    <h2 class="text-center my-5" style="font-size: 2.5rem; font-weight: bold; color: #333; text-transform: uppercase; letter-spacing: 1.5px;">Meet Our Trainers</h2>
+    
+    <div class="row justify-content-center">
+     
+        {% for i in train %}
+       
+            <div class="col-md-4 col-sm-6 my-3">
+                <div class="card text-center shadow-lg trainer-card" style="border-radius: 15px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;">
+                    <img src="{{ i.tr_img.url }}" class="card-img-top" alt="{{ i.tr_name }}" style="height: 300px; object-fit: cover; transition: transform 0.3s;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-size: 1.5rem; font-weight: bold; color: #ff7f50;">{{ i.tr_name }}</h5>
+                        <p class="card-text" style="color: #666;">{{ i.tr_desc }}</p>
+                    </div>
+                </div>
+            </div>  
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
