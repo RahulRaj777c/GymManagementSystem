@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-xyj6z4a_93mv(s@+6mz5rgfxn305f4@512)jh8lmii($(yzl7r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['gymmanagementsystem-1-77i8.onrender.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
